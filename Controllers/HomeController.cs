@@ -28,9 +28,16 @@ namespace TempleSignUp.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult SignUp()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult SignUp(string uselessFillerCrapVarriableToBeReplacedLater)
+        {
+            return View("Index");//Change this to go to the next group info form later
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
