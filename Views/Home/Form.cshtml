@@ -11,8 +11,11 @@
         <div asp-validation-summary="All"></div>
         <input type="hidden" asp-for="AppointmentID" />
 
-        <label asp-for="Date">Appointment Date & Time:</label>
+        <label asp-for="Date">Date:</label>
         <input asp-for="Date" disabled  />
+
+        <label asp-for="Time">Time:</label>
+        <input asp-for="Time" disabled  />
 
         <label asp-for="GroupName">Name of group:</label>
         <input asp-for="GroupName" /><br />

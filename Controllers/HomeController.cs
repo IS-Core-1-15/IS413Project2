@@ -64,7 +64,7 @@ namespace TempleSignUp.Controllers
                 aContext.Add(a);
                 aContext.SaveChanges();
 
-                return RedirectToAction("ViewAppointments");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -89,7 +89,7 @@ namespace TempleSignUp.Controllers
                 aContext.Update(a);
                 aContext.SaveChanges();
 
-                return RedirectToAction("ViewAppointments");
+                return RedirectToAction("Index");
             }
             else
             {
