@@ -39,7 +39,7 @@ namespace TempleSignUp.Controllers
         [HttpPost]
         public IActionResult SignUp(string uselessFillerCrapVarriableToBeReplacedLater)
         {
-            return View("Index");//Change this to go to the next group info form later
+            return RedirectToAction("Index");//Change this to go to the next group info form later
         }
 
         [HttpGet]
