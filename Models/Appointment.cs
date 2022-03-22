@@ -17,6 +17,14 @@ namespace TempleSignUp.Models
         public int GroupSize { get; set; }
         [Required]
         public string Email { get; set; }
+        
         public string PhoneNumber { get; set; }
+
+        [Required]
+        public DateTime Date { get; set; }
+
+        [Required]
+        [Range(8,20, ErrorMessage = "Time Must be between 8am and 8pm")]
+        public int Time { get; set; }
     }
 }
