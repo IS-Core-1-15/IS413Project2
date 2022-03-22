@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Appointment Info";
+}
+@model TempleSignUp.Models.Appointment
+
+<h1>Fill Out Appointment Info</h1>
+
+<div>
+    <form method="post">
+
+        <div asp-validation-summary="All"></div>
+        <label asp-for="GroupName">Name of group:</label>
+        <input asp-for="GroupName" /><br />
+
+        <label asp-for="GroupSize">Size of group:</label>
+        <input asp-for="GroupSize" /><br />
+
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" /><br />
+
+        <label asp-for="PhoneNumber">Phone number:</label>
+        <input asp-for="PhoneNumber" /><br />
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
