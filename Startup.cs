@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TempleSignUp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TempleSignUp
 {
@@ -24,6 +26,11 @@ namespace TempleSignUp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<AppointmentContext>(options =>
+            {
+                options.UseSqlite(Configuration["ConnectionStrings:AppointmentDBConnection"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
