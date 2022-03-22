@@ -13,6 +13,8 @@ namespace TempleSignUp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        private AppointmentContext aContext { get; set; }
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -47,6 +49,54 @@ namespace TempleSignUp.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View("Form");
+        }
+
+        [HttpPost]
+        public IActionResult Add(Appointment a)
+        {
+            if (ModelState.IsValid)
+            {
+                aContext.Add(a);
+                aContext.SaveChanges();
+
+                return RedirectToAction("ViewAppointments");
+            }
+            else
+            {
+                return View("Form");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var appointment = aContext.Appointments
+                .Single(x => x.AppointmentID == id);
+
+            return View("Form", appointment);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Appointment a)
+        {
+            if (ModelState.IsValid)
+            {
+                aContext.Update(a);
+                aContext.SaveChanges();
+
+                return RedirectToAction("ViewAppointments");
+            }
+            else
+            {
+                return View("Form");
+            }
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
