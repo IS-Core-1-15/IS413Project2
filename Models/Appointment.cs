@@ -14,6 +14,7 @@ namespace TempleSignUp.Models
         [Required]
         public string GroupName { get; set; }
         [Required]
+        [Range(1,15, ErrorMessage = "Groups must be between 1 and 15 individuals")]
         public int GroupSize { get; set; }
         [Required]
         public string Email { get; set; }
