@@ -32,9 +32,22 @@ namespace TempleSignUp.Controllers
         }
 
         [HttpGet]
-        public IActionResult SignUp()
+        public IActionResult SignUp(DateTime day = new DateTime())
         {
-            return View();
+            DateTime now = DateTime.Now;
+
+            if (day < now)
+            {
+                day = now;
+            }
+
+            List<int> times = new List<int>() { 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+
+            List<int> apps = aContext.Appointments.Where(x => x.Date == day).Select(x => x.Time).ToList();
+
+            List<int> availableTimes = (List<int>)times.Except(apps);
+            
+            return View(availableTimes);
         }
 
         [HttpPost]
