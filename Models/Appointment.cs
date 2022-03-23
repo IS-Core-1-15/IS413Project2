@@ -29,10 +29,10 @@ namespace TempleSignUp.Models
         public int Time { get; set; }
 
 
-        public string GetTime(int? time)
+        public string GetTime(int time = 0)
         {
             int t;
-            if (time == null)
+            if (time == 0)
             {
                 t = this.Time;
             }
