@@ -29,16 +29,26 @@ namespace TempleSignUp.Models
         public int Time { get; set; }
 
 
-        public string GetTime()
+        public string GetTime(int? time)
         {
-            if(this.Time > 12)
+            int t;
+            if (time == null)
             {
-                int time = this.Time - 12;
-                return time.ToString() + ":00 PM";
+                t = this.Time;
             }
             else
             {
-                return this.Time.ToString() + ":00 AM";
+                t = (int)time;
+            }
+
+            if(t > 12)
+            {
+                t -= 12;
+                return t.ToString() + ":00 PM";
+            }
+            else
+            {
+                return t.ToString() + ":00 AM";
             }
         }
     }
