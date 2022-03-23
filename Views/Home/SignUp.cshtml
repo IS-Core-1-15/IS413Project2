@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Sign Up";
 }
-@model TempleSignUp.Models.Appointment
+@model List<int>
 
 <div class="text-center">
     <h1 class="display-4">Tour Sign Up</h1>
@@ -9,8 +9,8 @@
 
 <form method="post">
     @*TODO: Need to add asp-for stuff later*@
-    <label asp-for="Date">Date:</label>
-    <input asp-for="Date" type="date" id="date" onchange="doAction(this.value);"/>
+    <label for="date">Date:</label>
+    <input id="date" type="date" id="date" onchange="doAction(this.value);"/>
 
     <label>Week: </label><br />
     <select>
@@ -24,21 +24,12 @@
     </select>
     <br /><br />
 
-    <label asp-for="Time">Appointment Time: </label><br />
-    <select asp-for="Time">
-        <option value=8>8 AM</option>
-        <option value=9>9 AM</option>
-        <option value=10>10 AM</option>
-        <option value=11>11 AM</option>
-        <option value=12>12 PM</option>
-        <option value=13>1 PM</option>
-        <option value=14>2 PM</option>
-        <option value=15>3 PM</option>
-        <option value=16>4 PM</option>
-        <option value=17>5 PM</option>
-        <option value=18>6 PM</option>
-        <option value=19>7 PM</option>
-        <option value=20>8 PM</option>
+    <label for="time">Appointment Time: </label><br />
+    <select name="time" id="time">
+        @foreach (int time in Model)
+            {
+                <option value=@time>@time</option>
+            }
     </select>
     <br /><br />
 
