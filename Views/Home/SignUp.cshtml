@@ -6,31 +6,42 @@
 <div class="text-center">
     <h1 class="display-4">Tour Sign Up</h1>
 </div>
+<p>@ViewBag.date</p>
+<p></p>
 
 <form method="post">
     @*TODO: Need to add asp-for stuff later*@
     <label asp-for="Date">Date:</label>
-    <input asp-for="Date" type="date" id="date" onchange="doAction(this.value);"/>
+    <input asp-for="Date" type="date" id="date"
+           value="@ViewBag.date.ToString("yyyy-MM-dd")"
+           min="@ViewBag.today.ToString("yyyy-MM-dd")"
+           max="@ViewBag.date.AddMonths(3).ToString("yyyy-MM-dd")"
+           onchange="doAction(this.value);" />
     <br />
-
+    @if (ViewBag.times.Count > 0)
+    {
     <label asp-for="Time">Appointment Time: </label><br />
     <select asp-for="Time">
         @foreach (int time in ViewBag.times)
-            {
-                <option value=@time>@Appointment.GetTime(time)</option>
-            }
+        {
+            <option value=@time>@Appointment.GetTime(time)</option>
+        }
     </select>
     <br /><br />
 
     <input type="submit" value="Schedule Tour" />
+    }
+    else
+    {
+        <br />
+        <p>No Appointments available for @ViewBag.date.ToString("yyyy-MM-dd")</p>
+    }
 
     @*TODO: Add validation?*@
     <div asp-validation-summary="All"></div>
 
 </form>
 
-<script>
-    function doAction(val) {
-        window.location = 'http://localhost:5001/Home/SignUp/?day=' + val;
-    }
-</script>
+<script>function doAction(val) {
+        window.location = 'https://localhost:5001/Home/SignUp/' + val;
+    }</script>

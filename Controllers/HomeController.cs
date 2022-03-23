@@ -43,11 +43,13 @@ namespace TempleSignUp.Controllers
 
             List<int> times = new List<int>() { 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
 
-            List<int> apps = aContext.Appointments.Where(x => x.Date == day).Select(x => x.Time).ToList();
+            List<int> apps = aContext.Appointments.Where(x => x.Date.Day == day.Day).Select(x => x.Time).ToList();
 
             List<int> availableTimes = times.Except(apps).ToList();
 
             ViewBag.times = availableTimes;
+            ViewBag.date = day;
+            ViewBag.today = now;
 
             return View();
         }
@@ -63,7 +65,10 @@ namespace TempleSignUp.Controllers
         {
             DateTime now = DateTime.Now;
 
-            List<Appointment> apps = aContext.Appointments.Where(x => x.Date >= now).ToList();
+            List<Appointment> apps = aContext.Appointments
+                .Where(x => x.Date.Date >= now.Date)
+                .OrderBy(x => x.Date)
+                .ToList();
 
             return View(apps);
         }
@@ -113,14 +118,14 @@ namespace TempleSignUp.Controllers
                     aContext.Add(a);
                     aContext.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ViewAppointments");
                 }
                 else
                 {
                     aContext.Update(a);
                     aContext.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ViewAppointments");
                 }
             }
             else
