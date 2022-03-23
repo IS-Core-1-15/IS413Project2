@@ -29,17 +29,8 @@ namespace TempleSignUp.Models
         public int Time { get; set; }
 
 
-        public string GetTime(int time = 0)
+        public string GetTime(int t)
         {
-            int t;
-            if (time == 0)
-            {
-                t = this.Time;
-            }
-            else
-            {
-                t = (int)time;
-            }
 
             if(t > 12)
             {
