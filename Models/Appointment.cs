@@ -27,5 +27,19 @@ namespace TempleSignUp.Models
         [Required]
         [Range(8,20, ErrorMessage = "Time Must be between 8am and 8pm")]
         public int Time { get; set; }
+
+
+        public string GetTime()
+        {
+            if(this.Time > 12)
+            {
+                int time = this.Time - 12;
+                return time.ToString() + ":00 PM";
+            }
+            else
+            {
+                return this.Time.ToString() + ":00 AM";
+            }
+        }
     }
 }

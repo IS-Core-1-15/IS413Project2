@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TempleSignUp.Models;
 
 namespace TempleSignUp.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    partial class AppointmentContextModelSnapshot : ModelSnapshot
+    [Migration("20220323152539_KalvinInit")]
+    partial class KalvinInit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,28 +47,6 @@ namespace TempleSignUp.Migrations
                     b.HasKey("AppointmentID");
 
                     b.ToTable("Appointments");
-
-                    b.HasData(
-                        new
-                        {
-                            AppointmentID = 1,
-                            Date = new DateTime(2011, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "email@email.com",
-                            GroupName = "Joe's Peeps",
-                            GroupSize = 15,
-                            PhoneNumber = "555-555-5555",
-                            Time = 16
-                        },
-                        new
-                        {
-                            AppointmentID = 2,
-                            Date = new DateTime(2022, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "Brady@email.com",
-                            GroupName = "Marsha",
-                            GroupSize = 10,
-                            PhoneNumber = "921-345-6456",
-                            Time = 10
-                        });
                 });
 #pragma warning restore 612, 618
         }
