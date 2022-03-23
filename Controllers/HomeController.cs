@@ -76,7 +76,7 @@ namespace TempleSignUp.Controllers
             aContext.Appointments.Remove(app);
             aContext.SaveChanges();
 
-            return RedirectToAction("MovieList");
+            return RedirectToAction("ViewAppointments");
         }
 
         [HttpGet]
