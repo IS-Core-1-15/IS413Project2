@@ -37,7 +37,7 @@ else
             <td>@app.Email</td>
             <td>@app.PhoneNumber</td>
             <td>@app.Date.ToShortDateString()</td>
-            <td>@app.GetTime())</td>
+            <td>@Appointment.GetTime(app.Time)</td>
             <td> <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@app.AppointmentID">Edit</a> </td>
             <td> <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@app.AppointmentID">Delete</a> </td>
         </tr>

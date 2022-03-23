@@ -7,7 +7,7 @@
     <h1 class="display-4">Tour Sign Up</h1>
 </div>
 
-<form method="post" asp-controller="Home" asp-action="Add">
+<form method="post">
     @*TODO: Need to add asp-for stuff later*@
     <label asp-for="Date">Date:</label>
     <input asp-for="Date" type="date" id="date" onchange="doAction(this.value);"/>
@@ -17,7 +17,7 @@
     <select asp-for="Time">
         @foreach (int time in ViewBag.times)
             {
-                <option value=@time>@Model.GetTime(time)</option>
+                <option value=@time>@Appointment.GetTime(time)</option>
             }
     </select>
     <br /><br />

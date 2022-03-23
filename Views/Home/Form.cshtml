@@ -21,7 +21,7 @@
 
 
         <label for="PrettyTime">Time:</label>
-        <input id="PrettyTime" disabled value="@Model.GetTime()" />
+        <input id="PrettyTime" disabled value="@Appointment.GetTime(Model.Time)" />
         <br />
 
         <label asp-for="GroupName">Name of group:</label><br />
