@@ -1,34 +1,23 @@
 ﻿@{
     ViewData["Title"] = "Sign Up";
 }
-@model List<int>
+@model Appointment
 
 <div class="text-center">
     <h1 class="display-4">Tour Sign Up</h1>
 </div>
 
-<form method="post">
+<form method="post" asp-controller="Home" asp-action="Add">
     @*TODO: Need to add asp-for stuff later*@
-    <label for="date">Date:</label>
-    <input id="date" type="date" id="date" onchange="doAction(this.value);"/>
+    <label asp-for="Date">Date:</label>
+    <input asp-for="Date" type="date" id="date" onchange="doAction(this.value);"/>
+    <br />
 
-    <label>Week: </label><br />
-    <select>
-        <option value="">Select a week to view available appointments</option>
-    </select>
-    <br /><br />
-
-    <label>Appointment: </label><br />
-    <select>
-        <option value="">Select an available appointment</option>
-    </select>
-    <br /><br />
-
-    <label for="time">Appointment Time: </label><br />
-    <select name="time" id="time">
-        @foreach (int time in Model)
+    <label asp-for="Time">Appointment Time: </label><br />
+    <select asp-for="Time">
+        @foreach (int time in ViewBag.times)
             {
-                <option value=@time>@time</option>
+                <option value=@time>@Model.GetTime(time)</option>
             }
     </select>
     <br /><br />

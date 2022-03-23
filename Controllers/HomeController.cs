@@ -46,8 +46,10 @@ namespace TempleSignUp.Controllers
             List<int> apps = aContext.Appointments.Where(x => x.Date == day).Select(x => x.Time).ToList();
 
             List<int> availableTimes = times.Except(apps).ToList();
-            
-            return View(availableTimes);
+
+            ViewBag.times = availableTimes;
+
+            return View();
         }
 
         [HttpPost]
