@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TempleSignUp.Models;
 
 namespace TempleSignUp.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    partial class AppointmentContextModelSnapshot : ModelSnapshot
+    [Migration("20220323153946_seedData")]
+    partial class seedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

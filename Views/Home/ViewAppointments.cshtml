@@ -22,17 +22,17 @@
     <tbody>
         @foreach (var app in Model)
         {
-            <tr>
-                <td>@app.GroupName</td>
-                <td>@app.GroupSize</td>
-                <td>@app.Email</td>
-                <td>@app.PhoneNumber</td>
-                <td>@app.Date</td>
-                <td>@app.Time</td>
-
-                <td> <a href="#">Edit</a> </td>
-                <td> <a href="#">Delete</a></td>
-            </tr>
+        <tr>
+            <td>@app.GroupName</td>
+            <td>@app.GroupSize</td>
+            <td>@app.Email</td>
+            <td>@app.PhoneNumber</td>
+            <td>@app.Date.ToShortDateString()</td>
+            <td>@app.GetTime()</td>
+            <td> <a asp-controller="Home" asp-action="Edit" asp-route-id="@app.AppointmentID">Edit</a> </td>
+            <td> <a href="#">Delete</a></td>
+            @*<td> <a asp-controller="Home" asp-action="Delete" asp-route-movieid="@i.MovieId">Delete</a> </td>*@
+        </tr>
         }
     </tbody>
 
