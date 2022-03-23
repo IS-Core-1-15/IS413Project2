@@ -9,6 +9,8 @@
 
 <form method="post">
     @*TODO: Need to add asp-for stuff later*@
+    <label asp-for="Date">Date:</label>
+    <input asp-for="Date" type="date" id="date" onchange="doAction(this.value);"/>
 
     <label>Week: </label><br />
     <select>
@@ -24,7 +26,6 @@
 
     <label asp-for="Time">Appointment Time: </label><br />
     <select asp-for="Time">
-        <option value="">Select an available time</option>
         <option value=8>8 AM</option>
         <option value=9>9 AM</option>
         <option value=10>10 AM</option>
