@@ -75,6 +75,24 @@ namespace TempleSignUp.Controllers
         }
 
         [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            Appointment app = aContext.Appointments.FirstOrDefault(x => x.AppointmentID == id);
+
+            return View("Delete", app);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Appointment app)
+        {
+            // Delete from DB
+            aContext.Appointments.Remove(app);
+            aContext.SaveChanges();
+
+            return RedirectToAction("ViewAppointments");
+        }
+
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             var appointment = aContext.Appointments
