@@ -29,7 +29,7 @@ namespace TempleSignUp.Models
         public int Time { get; set; }
 
 
-        public string GetTime(int t)
+        public static string GetTime(int t)
         {
 
             if(t > 12)
