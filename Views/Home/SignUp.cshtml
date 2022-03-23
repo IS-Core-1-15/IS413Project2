@@ -48,3 +48,9 @@
     <div asp-validation-summary="All"></div>
 
 </form>
+
+<script>
+    function doAction(val) {
+        window.location = 'http://localhost:5001/Home/SignUp/?day=' + val;
+    }
+</script>
