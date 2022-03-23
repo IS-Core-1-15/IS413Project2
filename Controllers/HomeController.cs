@@ -15,9 +15,10 @@ namespace TempleSignUp.Controllers
 
         private AppointmentContext aContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AppointmentContext temp)
         {
             _logger = logger;
+            aContext = temp;
         }
 
         public IActionResult Index()
@@ -45,7 +46,11 @@ namespace TempleSignUp.Controllers
         [HttpGet]
         public IActionResult ViewAppointments()
         {
-            return View("ViewAppointments");
+            DateTime now = DateTime.Now;
+
+            List<Appointment> apps = aContext.Appointments.Where(x => x.Date >= now).ToList();
+
+            return View(apps);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

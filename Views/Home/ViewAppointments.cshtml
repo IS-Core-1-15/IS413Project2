@@ -4,6 +4,8 @@
 @{
 }
 
+@model List<Appointment> 
+
 <table class="table table-bordered table-striped">
 
     <thead class="font-weight-bold">
@@ -18,17 +20,20 @@
     </thead>
 
     <tbody>
-        <tr>
-            <td>Group Name</td>
-            <td>Group Size</td>
-            <td>Email Address</td>
-            <td>Phone Number</td>
-            <td>Date</td>
-            <td>Time</td>
+        @foreach (var app in Model)
+        {
+            <tr>
+                <td>@app.GroupName</td>
+                <td>@app.GroupSize</td>
+                <td>@app.Email</td>
+                <td>@app.PhoneNumber</td>
+                <td>@app.Date</td>
+                <td>@app.Time</td>
 
-            <td> <a href="#">Edit</a> </td>
-            <td> <a href="#">Delete</a></td>
-        </tr>
+                <td> <a href="#">Edit</a> </td>
+                <td> <a href="#">Delete</a></td>
+            </tr>
+        }
     </tbody>
 
 </table>
