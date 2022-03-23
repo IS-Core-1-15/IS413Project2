@@ -6,27 +6,29 @@
 <h1>Fill Out Appointment Info</h1>
 
 <div>
-    <form method="post">
+    <form method="post" asp-action="Form">
 
         <div asp-validation-summary="All"></div>
         <input type="hidden" asp-for="AppointmentID" />
 
         <label asp-for="Date">Date:</label>
         <input asp-for="Date" disabled  />
+        <br />
 
         <label asp-for="Time">Time:</label>
         <input asp-for="Time" disabled  />
+        <br />
 
-        <label asp-for="GroupName">Name of group:</label>
+        <label asp-for="GroupName">Name of group:</label><br />
         <input asp-for="GroupName" /><br />
 
-        <label asp-for="GroupSize">Size of group (maximum group size is 15):</label>
+        <label asp-for="GroupSize">Size of group (maximum group size is 15):</label><br />
         <input asp-for="GroupSize" /><br />
 
-        <label asp-for="Email">Email (address@email.com):</label>
+        <label asp-for="Email">Email (address@email.com):</label><br />
         <input asp-for="Email" /><br />
 
-        <label asp-for="PhoneNumber">Phone number (123-456-7890):</label>
+        <label asp-for="PhoneNumber">Phone number (123-456-7890):</label><br />
         <input asp-for="PhoneNumber" /><br />
 
         <button type="submit">Submit</button>
