@@ -2,9 +2,18 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "View Appointments";
 }
 
-@model List<Appointment> 
+@model List<Appointment>
+
+@if (Model.Count < 1)
+{
+<h3>No Appointments Scheduled</h3>
+<a class="btn btn-primary" asp-controller="Home" asp-action="SignUp">Sign Up Now</a>
+}
+else
+{
 
 <table class="table table-bordered table-striped">
 
@@ -29,11 +38,11 @@
             <td>@app.PhoneNumber</td>
             <td>@app.Date.ToShortDateString()</td>
             <td>@app.GetTime()</td>
-            <td> <a asp-controller="Home" asp-action="Edit" asp-route-id="@app.AppointmentID">Edit</a> </td>
-            <td> <a href="#">Delete</a></td>
-            @*<td> <a asp-controller="Home" asp-action="Delete" asp-route-movieid="@i.MovieId">Delete</a> </td>*@
+            <td> <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@app.AppointmentID">Edit</a> </td>
+            <td> <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@app.AppointmentID">Delete</a> </td>
         </tr>
         }
     </tbody>
 
 </table>
+}
