@@ -11,12 +11,17 @@
         <div asp-validation-summary="All"></div>
         <input type="hidden" asp-for="AppointmentID" />
 
-        <label asp-for="Date">Date:</label>
-        <input asp-for="Date" disabled  />
+        <input type="hidden" asp-for="Date" />
+
+        <label for="PrettyDate">Date:</label>
+        <input id="PrettyDate" disabled  value="@Model.Date.ToShortDateString()"/>
         <br />
 
-        <label asp-for="Time">Time:</label>
-        <input asp-for="Time" disabled  />
+        <input type="hidden" asp-for="Time" />
+
+
+        <label for="PrettyTime">Time:</label>
+        <input id="PrettyTime" disabled value="@Model.GetTime()" />
         <br />
 
         <label asp-for="GroupName">Name of group:</label><br />
