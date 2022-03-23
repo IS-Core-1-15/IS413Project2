@@ -54,27 +54,11 @@ namespace TempleSignUp.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        
+
         [HttpGet]
         public IActionResult Add()
         {
             return View("Form");
-        }
-
-        [HttpPost]
-        public IActionResult Add(Appointment a)
-        {
-            if (ModelState.IsValid)
-            {
-                aContext.Add(a);
-                aContext.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View("Form");
-            }
         }
 
         [HttpGet]
@@ -87,14 +71,24 @@ namespace TempleSignUp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Appointment a)
+        public IActionResult Form(Appointment a)
         {
             if (ModelState.IsValid)
             {
-                aContext.Update(a);
-                aContext.SaveChanges();
+                if (a.AppointmentID == 0)
+                {
+                    aContext.Add(a);
+                    aContext.SaveChanges();
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    aContext.Update(a);
+                    aContext.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
             }
             else
             {
