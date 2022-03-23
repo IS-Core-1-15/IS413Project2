@@ -20,16 +20,16 @@
     <br />
     @if (ViewBag.times.Count > 0)
     {
-    <label asp-for="Time">Appointment Time: </label><br />
-    <select asp-for="Time">
-        @foreach (int time in ViewBag.times)
-        {
-            <option value=@time>@Appointment.GetTime(time)</option>
-        }
-    </select>
-    <br /><br />
+        <label asp-for="Time">Appointment Time: </label><br />
+        <select asp-for="Time">
+            @foreach (int time in ViewBag.times)
+            {
+                <option value=@time>@Appointment.GetTime(time)</option>
+            }
+        </select>
+        <br /><br />
 
-    <input type="submit" value="Schedule Tour" />
+        <input type="submit" value="Schedule Tour" />
     }
     else
     {
@@ -42,6 +42,9 @@
 
 </form>
 
-<script>function doAction(val) {
-        window.location = 'https://localhost:5001/Home/SignUp/' + val;
+<script>
+    function doAction(val) {
+        currentUrl = window.location.href;
+        currentUrl = currentUrl.slice(0,currentUrl.indexOf("/",16));
+        window.location = currentUrl + '/Home/SignUp/' + val;
     }</script>
