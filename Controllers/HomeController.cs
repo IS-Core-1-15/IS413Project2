@@ -37,9 +37,9 @@ namespace TempleSignUp.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignUp(string uselessFillerCrapVarriableToBeReplacedLater)
+        public IActionResult SignUp(Appointment model)
         {
-            return RedirectToAction("Index");//Change this to go to the next group info form later
+            return RedirectToAction("Add", model);//Make sure this is returning to the right place
         }
 
         [HttpGet]
@@ -51,9 +51,9 @@ namespace TempleSignUp.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult Add(Appointment model)
         {
-            return View("Form");
+            return View("Form", model);
         }
 
         [HttpGet]
